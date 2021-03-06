@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import FormLabel from "@material-ui/core/FormLabel";
 import FormControl from "@material-ui/core/FormControl";
@@ -7,7 +7,8 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import Checkbox from "@material-ui/core/Checkbox";
 import { Button } from "@material-ui/core";
-import data from "../dummyData";
+import { useGlobalContext } from "../context";
+import axios from "axios";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -37,10 +38,14 @@ export default function CheckboxesGroup() {
   const classes = useStyles();
   const initialQuestions = { q1: "", q2: "" };
   const [questions, setQuestion] = useState(initialQuestions);
-
-  const d = {};
-  data.forEach((item) => (d[item.id] = false));
-  const [state, setState] = useState(d);
+  const {
+    hasClicked,
+    setHasClicked,
+    questionList,
+    setQuestionList,
+  } = useGlobalContext();
+  const [loading, setLoading] = useState(true);
+  const [state, setState] = useState({});
 
   const handleChange = (e, item) => {
     setState({ ...state, [item.id]: e.target.checked });
@@ -65,7 +70,9 @@ export default function CheckboxesGroup() {
       for (const p in state) {
         if (state[p]) {
           newQuestions.q1 = newQuestions.q2;
-          newQuestions.q2 = data.filter((item) => item.id === p)[0].q;
+          newQuestions.q2 = questionList.filter(
+            (item) => item.id === p
+          )[0].question;
           console.log("Questions: ", `${p} `, questions);
         }
       }
@@ -73,6 +80,36 @@ export default function CheckboxesGroup() {
       setQuestion(initialQuestions);
     }
   };
+
+  useEffect(() => {
+    if (hasClicked) {
+      axios
+        .get("http://localhost:5000")
+        .then((respData) => {
+          return respData.data.questions.map((item) => {
+            return { id: item._id, question: item.question };
+          });
+        })
+        .then((list) => {
+          console.log("lit ", list);
+          setQuestionList(list);
+          setHasClicked(false);
+        });
+    }
+  }, [hasClicked, setQuestionList, setHasClicked]);
+
+  useEffect(() => {
+    if (questionList.length > 0) {
+      const d = {};
+      questionList.reverse();
+      questionList.forEach((item) => (d[item.id] = false));
+      setLoading(false);
+    }
+  }, [questionList]);
+
+  if (loading) {
+    return <div className="loading">Loading...</div>;
+  }
 
   return (
     <div className={classes.root}>
@@ -84,7 +121,7 @@ export default function CheckboxesGroup() {
         >
           <FormLabel component="legend">Pick any two</FormLabel>
           <FormGroup>
-            {data.map((item, i) => {
+            {questionList.map((item, i) => {
               return (
                 <FormControlLabel
                   color="secondary"
@@ -94,10 +131,10 @@ export default function CheckboxesGroup() {
                   control={
                     <Checkbox
                       onChange={(e) => handleChange(e, item)}
-                      name={item.q}
+                      name={item.question}
                     />
                   }
-                  label={item.q}
+                  label={item.question}
                 />
               );
             })}

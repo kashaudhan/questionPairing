@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { useGlobalContext } from "../context";
-import { makeStyles, TextField, Button } from "@material-ui/core";
+import React, { useState } from "react";
 import axios from "axios";
+import { useGlobalContext } from "../context";
 import ShowResult from "./ShowResult";
+import { makeStyles, TextField, Button } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -31,25 +31,27 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const InputField = () => {
-  const { inputQuestions, setInputQuestions } = useGlobalContext();
   const classes = useStyles();
-  const [hasPredicted, setHasPredicted] = useState(false);
+  const { setHasClicked, setLoading } = useGlobalContext();
   const [predVal, setPredVal] = useState(0.0);
+  const [hasPredicted, setHasPredicted] = useState(false);
+  const [inputQuestions, setInputQuestions] = useState({ q1: "", q2: "" });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     console.log(inputQuestions);
 
     await axios.post("http://localhost:5000", { question: inputQuestions.q1 });
     await axios.post("http://localhost:5000", { question: inputQuestions.q2 });
 
-    await axios.get("http://localhost:5000").then((res) => {
-      const temp = res.data.data;
-      const val = parseFloat(temp.substring(1, temp.length - 1));
-      setPredVal(val);
-      setHasPredicted(true);
-      console.log("data: ", val);
-    });
+    const resp = await axios.get("http://localhost:5000");
+    const tempData = await resp.data.data;
+    const val = parseFloat(tempData.substring(1, tempData.length - 1));
+    setPredVal(val);
+    setHasPredicted(true);
+    setHasClicked(true);
+    console.log("data: ", val);
   };
 
   const handleChange = (prop) => (e) => {

@@ -1,6 +1,6 @@
 import React, { useEffect, useCallback } from "react";
 
-const ShowResult = ({ val, removeMsg, list }) => {
+const ShowResult = ({ val, removeMsg }) => {
   const show = useCallback(() => {
     const timeout = setTimeout(() => {
       removeMsg(false);
