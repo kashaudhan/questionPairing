@@ -7,6 +7,7 @@ const useStyles = makeStyles((theme) => ({
     width: "80%",
     marginLeft: "5",
     marginTop: "2rem",
+    marginBottom: "2rem",
     position: "relative",
     "& > *": {
       marginLeft: "15%",
@@ -17,15 +18,6 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
-
-// const dummyData = [
-//   { q: "This is the first question in the list" },
-//   { q: "This is the second question in the list" },
-//   { q: "This is the third question in the list" },
-//   { q: "This is the fourth question in the list" },
-//   { q: "This is the fifth question in the list" },
-//   { q: "This is the sixth question in the list" },
-// ];
 
 const QuestionList = () => {
   const classes = useStyles();

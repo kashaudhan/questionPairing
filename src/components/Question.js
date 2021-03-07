@@ -9,6 +9,7 @@ import Checkbox from "@material-ui/core/Checkbox";
 import { Button } from "@material-ui/core";
 import { useGlobalContext } from "../context";
 import axios from "axios";
+import ShowResult from "./ShowResult";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -46,6 +47,8 @@ export default function CheckboxesGroup() {
   } = useGlobalContext();
   const [loading, setLoading] = useState(true);
   const [state, setState] = useState({});
+  const [hasSelected, setHasSelected] = useState(false);
+  const [predVal, setPredVal] = useState(0.0);
 
   const handleChange = (e, item) => {
     setState({ ...state, [item.id]: e.target.checked });
@@ -65,6 +68,7 @@ export default function CheckboxesGroup() {
     const newQuestions = initialQuestions;
     if (error()) {
       console.log("error");
+      console.log("state: ", state);
       setQuestion(initialQuestions);
     } else {
       for (const p in state) {
@@ -76,10 +80,25 @@ export default function CheckboxesGroup() {
           console.log("Questions: ", `${p} `, questions);
         }
       }
-      setQuestion({ newQuestions });
-      setQuestion(initialQuestions);
+      console.log("state: ", state);
+      setQuestion(newQuestions);
+      setHasSelected(true);
     }
   };
+
+  useEffect(() => {
+    if (hasSelected) {
+      axios
+        .get("http://localhost:5000")
+        .then((respData) => {
+          return respData.data.data;
+        })
+        .then((data) => {
+          const val = parseFloat(data.substring(1, data.length - 1));
+          setPredVal(val);
+        });
+    }
+  }, [hasSelected]);
 
   useEffect(() => {
     if (hasClicked) {
@@ -113,6 +132,14 @@ export default function CheckboxesGroup() {
 
   return (
     <div className={classes.root}>
+      <div className="result__block">
+        {hasSelected && (
+          <ShowResult
+            removeMsg={setHasSelected}
+            val={predVal > 0.3 ? true : false}
+          ></ShowResult>
+        )}
+      </div>
       <form onSubmit={handleSubmit}>
         <FormControl
           error={error()}

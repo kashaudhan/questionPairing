@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme) => ({
     "& > *": {
       marginLeft: "15%",
       marginTop: "50px",
+
       width: "80%",
       height: "100%",
       background: "rgb(245, 246, 247)",

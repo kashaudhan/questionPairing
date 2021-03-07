@@ -9,15 +9,19 @@ const AppProvider = ({ children }) => {
   const [questionList, setQuestionList] = useState([]);
 
   useEffect(() => {
-    const getData = async () => {
-      const resp = await axios.get("http://localhost:5000");
-      const data = await resp.data.questions;
-      console.log("Data: ", data);
-      setQuestionList(data);
-      //console.log("Questions: ", questionList);
-    };
-    getData();
+    axios
+      .get("http://localhost:5000")
+      .then((respData) => {
+        return respData.data.questions.map((item) => {
+          return { id: item._id, question: item.question };
+        });
+      })
+      .then((list) => {
+        console.log("lit ", list);
+        setQuestionList(list);
+      });
   }, []);
+
   return (
     <AppContext.Provider
       value={{
