@@ -25,7 +25,7 @@ const InputCard = () => {
   return (
     <>
       <div className={classes.root}>
-        <Paper className="paper" elevation={5}>
+        <Paper elevation={10}>
           <InputField />
         </Paper>
       </div>

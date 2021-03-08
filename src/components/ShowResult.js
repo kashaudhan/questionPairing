@@ -1,10 +1,29 @@
 import React, { useEffect, useCallback } from "react";
+import { makeStyles } from "@material-ui/core";
+
+const useStyles = makeStyles(() => ({
+  similarIntent: {
+    height: "100%",
+    width: "100%",
+    marginTop: "0.2rem",
+    borderRadius: "5px",
+    background: "rgb(129, 129, 243)",
+  },
+  differentIntent: {
+    height: "100%",
+    width: "100%",
+    marginTop: "0.2rem",
+    borderRadius: "5px",
+    background: "rgb(252, 150, 150)",
+  },
+}));
 
 const ShowResult = ({ val, removeMsg }) => {
+  const classes = useStyles();
   const show = useCallback(() => {
     const timeout = setTimeout(() => {
       removeMsg(false);
-    }, 20000);
+    }, 7000);
     return () => clearTimeout(timeout);
   }, [removeMsg]);
 
@@ -13,11 +32,11 @@ const ShowResult = ({ val, removeMsg }) => {
   }, [show]);
 
   return (
-    <div className="predicted">
+    <div>
       {val ? (
-        <p className="similar">Has similar intent</p>
+        <p className={classes.similarIntent}>Has similar intent</p>
       ) : (
-        <p className="different">Has different intent</p>
+        <p className={classes.differentIntent}>Has different intent</p>
       )}
     </div>
   );

@@ -5,10 +5,11 @@ import ShowResult from "./ShowResult";
 import { makeStyles, TextField, Button } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
+  root: {},
+  formContainer: {
     display: "flex",
     flexWrap: "wrap",
-    padding: "2rem",
+    padding: "1rem 2rem 1rem 2rem",
   },
   textField: {
     marginTop: "1rem",
@@ -27,6 +28,13 @@ const useStyles = makeStyles((theme) => ({
   helperText: {
     margin: "0",
     fontSize: "10px",
+  },
+  result: {
+    height: "2rem",
+    width: "20%",
+    marginLeft: "40%",
+    marginBottom: ".5rem",
+    borderRadius: "5px",
   },
 }));
 
@@ -59,17 +67,21 @@ const InputField = () => {
   };
 
   return (
-    <div className="input__container">
-      <div className="result__block">
-        {hasPredicted && (
-          <ShowResult
-            removeMsg={setHasPredicted}
-            val={predVal > 0.4 ? true : false}
-            list={inputQuestions}
-          ></ShowResult>
-        )}
-      </div>
-      <form className={classes.root} autoComplete="off" onSubmit={handleSubmit}>
+    <div>
+      <form
+        className={classes.formContainer}
+        autoComplete="off"
+        onSubmit={handleSubmit}
+      >
+        <div className={classes.result}>
+          {hasPredicted && (
+            <ShowResult
+              removeMsg={setHasPredicted}
+              val={predVal > 0.4 ? true : false}
+              list={inputQuestions}
+            ></ShowResult>
+          )}
+        </div>
         <TextField
           fullWidth
           margin="dense"

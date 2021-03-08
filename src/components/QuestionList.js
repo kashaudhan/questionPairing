@@ -24,7 +24,7 @@ const QuestionList = () => {
   return (
     <>
       <div className={classes.root}>
-        <Paper className="paper" elevation={5}>
+        <Paper className="paper" elevation={10}>
           <Question />
         </Paper>
       </div>

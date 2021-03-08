@@ -13,11 +13,12 @@ import ShowResult from "./ShowResult";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    marginLeft: "1%",
+    display: "flex",
+    flexWrap: "wrap",
+    padding: ".5rem .5rem .1rem .5rem",
   },
   formControl: {
     margin: theme.spacing(3),
-    borderColor: "red",
   },
   label: {
     width: "100%",
@@ -28,10 +29,16 @@ const useStyles = makeStyles((theme) => ({
     padding: "2px",
     "&:hover": {
       background: "rgb(208, 229, 253)",
+      boxShadow: "2px 3px #aaaaac",
     },
   },
   submitButton: {
     marginTop: "1.5rem",
+  },
+  result: {
+    height: "2rem",
+    width: "20%",
+    marginLeft: "40%",
   },
 }));
 
@@ -132,7 +139,7 @@ export default function CheckboxesGroup() {
 
   return (
     <div className={classes.root}>
-      <div className="result__block">
+      <div className={classes.result}>
         {hasSelected && (
           <ShowResult
             removeMsg={setHasSelected}

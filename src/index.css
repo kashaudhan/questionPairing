@@ -16,33 +16,8 @@ body {
   line-height: 1.4;
   font-weight: 300;
   color: rgb(245, 246, 247);
+  display: flex;
 }
-.app{
-  display: "flex";
-}
-
-.main__container{
-  text-align: center;
-  align-items: center;
-  margin-top: 7.5rem;
-  margin-left: 10%;
-  position: relative;
-}
-.result__block{
-  height: 2.5rem;
-  padding: .2rem 1rem .2rem 1rem;
-  margin-left: 40%;
-  width: 20%;
-
-}
-.predicted{
-  border-radius: 20%;
-  margin: 5px;
-  word-wrap: break-word;
-}
-.predicted .similar{
-  background: rgb(129, 129, 243);
-}
-.predicted .different{
-  background: rgb(252, 150, 150);
+.x{
+  color: #aaaaac;
 }
