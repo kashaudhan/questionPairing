@@ -1,6 +1,9 @@
 {
-  "name": "todo-mern",
+  "name": "Quora Question Pairing ",
   "version": "0.1.0",
+  "author": "kashaudhan",
+  "description": "MernStack ML prediction application",
+  "license": "ISC",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.11.3",
