@@ -66,7 +66,7 @@ To read more click [here](https://www.quora.com/What-is-polarity-and-subjectivit
 * To install the dependencies run `npm install` .
 * run the above command in the backend folder too.
 * Now to start server run `nodemon server` in he backend folder.
-* To start app run `npm start`.
+* To start app run `npm start` in another terminal.
 * To run the python script you must have `python >= 3.7` installed.
 * Make sure your server is running before asking the app to predict.
 

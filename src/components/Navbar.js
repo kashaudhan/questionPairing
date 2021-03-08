@@ -74,17 +74,17 @@ export default function Navbar() {
               <Button>Contact</Button>
             </Typography>
 
-            <IconButton>
-              <GitHubIcon onClick={gotoGitProfile} />
+            <IconButton onClick={gotoGitProfile}>
+              <GitHubIcon />
             </IconButton>
-            <IconButton>
-              <LinkedInIcon onClick={gotoLinkedInProfile} />
+            <IconButton onClick={gotoLinkedInProfile}>
+              <LinkedInIcon />
             </IconButton>
-            <IconButton>
-              <TwitterIcon onClick={gotoInfo} />
+            <IconButton onClick={gotoInfo}>
+              <TwitterIcon />
             </IconButton>
-            <IconButton>
-              <InfoIcon onClick={gotoInfo} />
+            <IconButton onClick={gotoInfo}>
+              <InfoIcon />
             </IconButton>
           </Toolbar>
         </Container>

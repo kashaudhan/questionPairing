@@ -4,7 +4,7 @@ import axios from "axios";
 const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [hasClicked, setHasClicked] = useState(false);
   const [questionList, setQuestionList] = useState([]);
 

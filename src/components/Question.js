@@ -52,7 +52,6 @@ export default function CheckboxesGroup() {
     questionList,
     setQuestionList,
   } = useGlobalContext();
-  const [loading, setLoading] = useState(true);
   const [state, setState] = useState({});
   const [hasSelected, setHasSelected] = useState(false);
   const [predVal, setPredVal] = useState(0.0);
@@ -129,13 +128,8 @@ export default function CheckboxesGroup() {
       const d = {};
       questionList.reverse();
       questionList.forEach((item) => (d[item.id] = false));
-      setLoading(false);
     }
   }, [questionList]);
-
-  if (loading) {
-    return <div className="loading">Loading...</div>;
-  }
 
   return (
     <div className={classes.root}>

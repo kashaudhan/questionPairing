@@ -77,7 +77,7 @@ const InputField = () => {
           {hasPredicted && (
             <ShowResult
               removeMsg={setHasPredicted}
-              val={predVal > 0.4 ? true : false}
+              isSimilar={predVal > 0.3 ? true : false}
               list={inputQuestions}
             ></ShowResult>
           )}

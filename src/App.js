@@ -6,9 +6,8 @@ import Footer from "./components/Footer";
 import { makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    textAlign: "center",
-    marginLeft: "10%",
+  container: {
+    // width: "100%",
     marginTop: "7rem",
   },
 }));
@@ -16,9 +15,9 @@ const useStyles = makeStyles((theme) => ({
 function App() {
   const classes = useStyles();
   return (
-    <div>
+    <div className={classes.root}>
       <Navbar />
-      <div className={classes.root}>
+      <div className={classes.container}>
         <InputCard />
         <QuestionList />
       </div>

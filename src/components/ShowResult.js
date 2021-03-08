@@ -18,7 +18,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const ShowResult = ({ val, removeMsg }) => {
+const ShowResult = ({ isSimilar, removeMsg }) => {
   const classes = useStyles();
   const show = useCallback(() => {
     const timeout = setTimeout(() => {
@@ -33,7 +33,7 @@ const ShowResult = ({ val, removeMsg }) => {
 
   return (
     <div>
-      {val ? (
+      {isSimilar ? (
         <p className={classes.similarIntent}>Has similar intent</p>
       ) : (
         <p className={classes.differentIntent}>Has different intent</p>

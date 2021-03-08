@@ -10,10 +10,9 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "2rem",
     position: "relative",
     "& > *": {
-      marginLeft: "15%",
+      marginLeft: "12%",
       marginTop: "50px",
-
-      width: "80%",
+      width: "100%",
       height: "100%",
       background: "rgb(245, 246, 247)",
     },

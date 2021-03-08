@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Question from "./Question";
+import { useGlobalContext } from "../context";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "80%",
@@ -10,9 +12,9 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: "2rem",
     position: "relative",
     "& > *": {
-      marginLeft: "15%",
+      marginLeft: "12%",
       marginTop: "50px",
-      width: "80%",
+      width: "100%",
       height: "100%",
       background: "rgb(245, 246, 247)",
     },
@@ -21,6 +23,18 @@ const useStyles = makeStyles((theme) => ({
 
 const QuestionList = () => {
   const classes = useStyles();
+  const { loading, setLoading, questionList } = useGlobalContext();
+
+  useEffect(() => {
+    if (questionList.length > 0) {
+      setLoading(false);
+    }
+  }, [questionList, setLoading]);
+
+  if (loading) {
+    return <div className="loader"></div>;
+  }
+
   return (
     <>
       <div className={classes.root}>
