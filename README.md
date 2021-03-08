@@ -26,5 +26,13 @@ Machine Learning:- Python, Ensemble Learning Algorithms, Data Analysis
 * If the user opts to select any two questions from the rendered list then those selected questions is passed to the server side to process. 
 * After processing the result is displayed on the UI.
 
-To run the python script on server side I took the liberty to use Nodejs' `child_process()` method.
+To run the python script on server side I have used Nodejs' `child_process()` method.
+
+#### Now Machine Learning part:
+* Dataset is taken from [Kaggle](https://www.kaggle.com/c/quora-question-pairs)
+* The final training data was prepared after doing some cleaning and preprocessing. 
+* I have used python's `nltk` library to do the preprocessing.
+* To train the model I have use lightGBM, RandomForest and XGBoost algorithm. And out of all three XGBoost performs best.
+* So, XGBoost model was selected as the final for prediction.
+
 
