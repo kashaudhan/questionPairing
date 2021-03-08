@@ -11,11 +11,9 @@ Fullstack web based machine learning application which tells if the two input/se
 
 ### Technologies used:
 
-Frontend:- React.js and Material UI
-
-Backend: - Nodejs, Express.js, MongoDB
-
-Machine Learning:- Python, Ensemble Learning Algorithms, Data Analysis
+* Frontend:- `React.js` and `Material UI`
+* Backend: - `Nodejs`, `Express.js`, `MongoDB`
+* Machine Learning:- `Python`, `Ensemble Learning Algorithms`, `Data Analysis`
 
 #### How this application works:
 * On submitting the two input questions it gets stored in the database using the `post()` method.
