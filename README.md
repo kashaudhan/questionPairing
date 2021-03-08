@@ -39,7 +39,7 @@ To run the python script on server side I have used Nodejs' `child_process()` me
 ##### How Cosine Similarity works:
 Cosine similarity is a metric used to measure how similar the documents are irrespective of their size. Mathematically, it measures the cosine of the angle between two vectors projected in a multi-dimensional space. The cosine similarity is advantageous because even if the two similar documents are far apart by the Euclidean distance (due to the size of the document), chances are they may still be oriented closer together. The smaller the angle, higher the cosine similarity.
 
-[Cosine similarity](./images/cosine_similarity.PNG)
+  ![Cosine similarity](./images/cosine_similarity.PNG)
 
 ##### How Polarity works:
 Polarity analysis takes into account the amount of positive or negative terms that appear in a given sentence. It is useful to some extent, since it does a good job of structuring data sets.
