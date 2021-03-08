@@ -30,9 +30,19 @@ To run the python script on server side I have used Nodejs' `child_process()` me
 
 #### Now Machine Learning part:
 * Dataset is taken from [Kaggle](https://www.kaggle.com/c/quora-question-pairs)
-* The final training data was prepared after doing some cleaning and preprocessing. 
+* The final training data was prepared after doing some cleaning(removing punctuation, stemming, lemmatisation, etc) and preprocessing(cosine similarity, polarity, question length, etc). 
 * I have used python's `nltk` library to do the preprocessing.
 * To train the model I have use lightGBM, RandomForest and XGBoost algorithm. And out of all three XGBoost performs best.
 * So, XGBoost model was selected as the final for prediction.
+* Model evaluation metric: Log Loss. Log loss from XGBoost 0.428
+
+##### How Cosine Similarity works:
+Cosine similarity is a metric used to measure how similar the documents are irrespective of their size. Mathematically, it measures the cosine of the angle between two vectors projected in a multi-dimensional space. The cosine similarity is advantageous because even if the two similar documents are far apart by the Euclidean distance (due to the size of the document), chances are they may still be oriented closer together. The smaller the angle, higher the cosine similarity.
+
+[Cosine similarity](./images/cosine_similarity.PNG)
+
+##### How Polarity works:
+Polarity analysis takes into account the amount of positive or negative terms that appear in a given sentence. It is useful to some extent, since it does a good job of structuring data sets.
+If two questions have different polarity they have more chances of being different or vice-versa.
 
 
