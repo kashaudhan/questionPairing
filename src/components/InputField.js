@@ -35,6 +35,7 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: "40%",
     marginBottom: ".5rem",
     borderRadius: "5px",
+    textAlign: "center",
   },
 }));
 
