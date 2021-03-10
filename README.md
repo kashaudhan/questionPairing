@@ -37,8 +37,9 @@ Fullstack web based machine learning application which tells if the two input/se
 
 To run the python script on server side I have used Nodejs' `child_process()` method.
 
-<iframe width="1017" height="576" src="https://www.youtube.com/embed/68Nq_IlLZ8o" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+![Cosine similarity](./images/display.gif)
 
+or click [here](https://www.youtube.com/watch?v=68Nq_IlLZ8o) to see video demo.
 
 #### Now Machine Learning part:
 * Dataset is taken from [Kaggle](https://www.kaggle.com/c/quora-question-pairs)
