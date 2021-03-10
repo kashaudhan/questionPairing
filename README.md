@@ -49,6 +49,7 @@ or click [here](https://www.youtube.com/watch?v=68Nq_IlLZ8o) to see video demo.
 * To train the model I have use lightGBM, RandomForest and XGBoost algorithm. And out of all three XGBoost performs best.
 * So, XGBoost model was selected as the final for prediction.
 * Model evaluation metric: Log Loss. Log loss from XGBoost 0.428
+* To get the code for the ML part goto my other [repo](https://github.com/kashaudhan/Pairing_Similar_Questions)
 
 ##### How Cosine Similarity works:
 Cosine similarity is a metric used to measure how similar the documents are irrespective of their size. Mathematically, it measures the cosine of the angle between two vectors projected in a multi-dimensional space. The cosine similarity is advantageous because even if the two similar documents are far apart by the Euclidean distance (due to the size of the document), chances are they may still be oriented closer together. The smaller the angle, higher the cosine similarity.
