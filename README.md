@@ -2,7 +2,7 @@
 ![](https://img.shields.io/badge/node-v14.15.3-brightgreen) 
 ![](https://img.shields.io/badge/npm-v6.14.9-green) 
 ![](https://img.shields.io/badge/react.js-^17.0.1-lightblue) 
-![](https://img.shields.io/badge/database-mongoDD-brightgreen)
+![](https://img.shields.io/badge/database-mongoDB-brightgreen)
 ![](https://img.shields.io/badge/mongoose-^5.11.18-green)
 ![](https://img.shields.io/badge/express.js-^4.17.1-blue)
 ![](https://img.shields.io/badge/cors.js-^2.8.5-brown)
