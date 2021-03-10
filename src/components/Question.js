@@ -39,6 +39,7 @@ const useStyles = makeStyles((theme) => ({
     height: "2rem",
     width: "20%",
     marginLeft: "40%",
+    textAlign: "center",
   },
 }));
 
@@ -54,6 +55,7 @@ export default function CheckboxesGroup() {
   } = useGlobalContext();
   const [state, setState] = useState({});
   const [hasSelected, setHasSelected] = useState(false);
+  const [hasPredicted, setHasPredicted] = useState(false);
   const [predVal, setPredVal] = useState(0.0);
 
   const handleChange = (e, item) => {
@@ -94,29 +96,31 @@ export default function CheckboxesGroup() {
 
   useEffect(() => {
     if (hasSelected) {
+      console.log("question: ", questions);
       axios
-        .get("http://localhost:5000")
+        .post("http://localhost:5000/predict", questions)
         .then((respData) => {
-          return respData.data.data;
+          return respData.data;
         })
         .then((data) => {
-          const val = parseFloat(data.substring(1, data.length - 1));
+          const val = parseFloat(data);
+          console.log("selected n predicted: ", val);
           setPredVal(val);
+          setHasPredicted(true);
         });
     }
-  }, [hasSelected]);
+  }, [hasSelected, questions]);
 
   useEffect(() => {
     if (hasClicked) {
       axios
         .get("http://localhost:5000")
         .then((respData) => {
-          return respData.data.questions.map((item) => {
+          return respData.data.map((item) => {
             return { id: item._id, question: item.question };
           });
         })
         .then((list) => {
-          console.log("lit ", list);
           setQuestionList(list);
           setHasClicked(false);
         });
@@ -126,7 +130,6 @@ export default function CheckboxesGroup() {
   useEffect(() => {
     if (questionList.length > 0) {
       const d = {};
-      questionList.reverse();
       questionList.forEach((item) => (d[item.id] = false));
     }
   }, [questionList]);
@@ -134,10 +137,10 @@ export default function CheckboxesGroup() {
   return (
     <div className={classes.root}>
       <div className={classes.result}>
-        {hasSelected && (
+        {hasPredicted && (
           <ShowResult
-            removeMsg={setHasSelected}
-            val={predVal > 0.3 ? true : false}
+            isSimilar={predVal > 0.3 ? true : false}
+            removeMsg={setHasPredicted}
           ></ShowResult>
         )}
       </div>

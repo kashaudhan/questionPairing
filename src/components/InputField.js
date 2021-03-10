@@ -50,16 +50,17 @@ const InputField = () => {
     setLoading(true);
     console.log(inputQuestions);
 
-    await axios.post("http://localhost:5000", { question: inputQuestions.q1 });
-    await axios.post("http://localhost:5000", { question: inputQuestions.q2 });
-
-    const resp = await axios.get("http://localhost:5000");
-    const tempData = await resp.data.data;
-    const val = parseFloat(tempData.substring(1, tempData.length - 1));
+    axios.post("http://localhost:5000", { question: inputQuestions.q1 });
+    axios.post("http://localhost:5000", { question: inputQuestions.q2 });
+    const resp = await axios.post(
+      "http://localhost:5000/predict",
+      inputQuestions
+    );
+    const val = parseFloat(resp.data);
+    console.log("predicted val: ", val);
     setPredVal(val);
     setHasPredicted(true);
     setHasClicked(true);
-    console.log("data: ", val);
   };
 
   const handleChange = (prop) => (e) => {
