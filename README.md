@@ -15,7 +15,7 @@
 Fullstack web based machine learning application which tells if the two input/selected questions have similar meaning/intent.
 
 #### Features:
-* Given two input questions the app predicts if the have same meaning/intent.
+* Given two input questions the app predicts if they have same meaning/intent.
 * The two input questions will be stored in the MongoDB database.
 * The questions in the database will be rendered in the UI.
 * Form the given list of questions user can select any two questions and can ask to predict for the same and it will give the response accordingly.
